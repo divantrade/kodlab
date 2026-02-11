@@ -1,8 +1,28 @@
+import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
+
+export const metadata: Metadata = {
+  title: "KodLab — Code. Create. Launch.",
+  description:
+    "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
+  openGraph: {
+    title: "KodLab — Code. Create. Launch.",
+    description:
+      "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
+    siteName: "KodLab",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KodLab — Code. Create. Launch.",
+    description:
+      "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
+  },
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

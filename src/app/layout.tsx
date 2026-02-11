@@ -42,7 +42,11 @@ export const metadata: Metadata = {
       "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
     images: ["/opengraph-image"],
   },
-  metadataBase: new URL("https://kodlab.ai"),
+  metadataBase: new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL || "https://kodlab.ai"
+  ),
 };
 
 export default function RootLayout({
