@@ -14,78 +14,113 @@ const projectTech: Record<string, string[]> = {
   dewan: ["Next.js", "Tailwind", "Vercel"],
 };
 
-const projectColors = [
-  "from-cyan-500/20 to-blue-600/20",
-  "from-purple-500/20 to-pink-600/20",
-  "from-emerald-500/20 to-teal-600/20",
-  "from-orange-500/20 to-red-600/20",
-  "from-blue-500/20 to-indigo-600/20",
+const projectGradients = [
+  "from-cyan-600/30 via-blue-600/20 to-purple-600/30",
+  "from-purple-600/30 via-pink-500/20 to-rose-600/30",
+  "from-emerald-600/30 via-teal-500/20 to-cyan-600/30",
+  "from-amber-600/30 via-orange-500/20 to-red-600/30",
+  "from-blue-600/30 via-indigo-500/20 to-violet-600/30",
 ];
+
+function ProjectCard({
+  projectKey,
+  index,
+  gradient,
+  tech,
+  t,
+}: {
+  projectKey: string;
+  index: number;
+  gradient: string;
+  tech: string[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  t: any;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -6 }}
+      className="group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-all duration-300"
+    >
+      <div
+        className={`relative h-52 sm:h-56 bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden`}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_70%)]" />
+        <div className="text-3xl sm:text-4xl font-extrabold text-white/15 font-mono tracking-wider select-none">
+          {t(`projects.${projectKey}.name`)}
+        </div>
+        <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/50 transition-all duration-300 flex items-center justify-center">
+          <span className="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 text-white text-sm font-semibold px-6 py-2.5 rounded-xl bg-cyan-500/90 backdrop-blur-sm transition-all duration-300 shadow-lg shadow-cyan-500/20">
+            {t("viewProject")}
+          </span>
+        </div>
+      </div>
+
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-3 gap-3">
+          <h3 className="text-lg font-bold text-white">
+            {t(`projects.${projectKey}.name`)}
+          </h3>
+          <span className="text-xs text-cyan-400 font-mono whitespace-nowrap px-2.5 py-1 rounded-md bg-cyan-500/10">
+            {t(`projects.${projectKey}.category`)}
+          </span>
+        </div>
+        <p className="text-gray-400 text-sm mb-5 leading-relaxed">
+          {t(`projects.${projectKey}.description`)}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {tech.map((item) => (
+            <span
+              key={item}
+              className="px-3 py-1.5 rounded-lg bg-navy-700/60 text-xs text-gray-300 font-mono border border-navy-600/50"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Portfolio() {
   const t = useTranslations("portfolio");
 
   return (
     <section id="portfolio" className="py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader
           badge={t("badge")}
           title={t("title")}
           subtitle={t("subtitle")}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectKeys.map((key, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          {projectKeys.slice(0, 3).map((key, index) => (
+            <ProjectCard
               key={key}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className={`group relative rounded-xl bg-navy-800/50 border border-navy-700 hover:border-cyan-500/30 overflow-hidden transition-all duration-300 ${
-                index >= 3 ? "md:col-span-1 lg:col-span-1" : ""
-              }`}
-            >
-              {/* Project Image Placeholder */}
-              <div
-                className={`relative h-48 bg-gradient-to-br ${projectColors[index]} flex items-center justify-center`}
-              >
-                <div className="text-4xl font-bold text-white/20 font-mono">
-                  {t(`projects.${key}.name`)}
-                </div>
-                <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/40 transition-all duration-300 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 text-white text-sm font-medium px-4 py-2 rounded-lg bg-cyan-500/80 transition-all duration-300">
-                    {t("viewProject")}
-                  </span>
-                </div>
-              </div>
+              projectKey={key}
+              index={index}
+              gradient={projectGradients[index]}
+              tech={projectTech[key]}
+              t={t}
+            />
+          ))}
+        </div>
 
-              {/* Project Info */}
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-semibold text-white">
-                    {t(`projects.${key}.name`)}
-                  </h3>
-                  <span className="text-xs text-cyan-400 font-mono">
-                    {t(`projects.${key}.category`)}
-                  </span>
-                </div>
-                <p className="text-gray-400 text-sm mb-4">
-                  {t(`projects.${key}.description`)}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {projectTech[key].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-md bg-navy-700/50 text-xs text-gray-300 font-mono"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projectKeys.slice(3).map((key, index) => (
+            <ProjectCard
+              key={key}
+              projectKey={key}
+              index={index + 3}
+              gradient={projectGradients[index + 3]}
+              tech={projectTech[key]}
+              t={t}
+            />
           ))}
         </div>
       </div>

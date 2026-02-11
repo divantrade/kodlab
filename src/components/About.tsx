@@ -15,7 +15,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <SectionHeader badge={t("badge")} title={t("title")} subtitle="" />
 
         <div className="max-w-4xl mx-auto">
@@ -24,21 +24,21 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative p-8 sm:p-12 rounded-2xl bg-navy-800/30 border border-navy-700"
+            className="relative p-8 sm:p-12 rounded-2xl bg-navy-800/40 border border-navy-700/80 overflow-hidden"
           >
             {/* Glow effect */}
-            <div className="absolute -top-20 start-1/2 -translate-x-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-[80px]" />
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-[100px]" />
 
             <div className="relative">
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
                 {t("description")}
               </p>
-              <p className="text-gray-400 leading-relaxed mb-10">
+              <p className="text-gray-400 leading-relaxed mb-12">
                 {t("description2")}
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-3 gap-4 sm:gap-8">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
@@ -46,12 +46,14 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="text-center"
+                    className="text-center p-4 sm:p-6 rounded-xl bg-navy-900/50 border border-navy-700/50"
                   >
-                    <div className="text-3xl sm:text-4xl font-bold gradient-text mb-1">
+                    <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold gradient-text mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
+                    <div className="text-xs sm:text-sm text-gray-400">
+                      {stat.label}
+                    </div>
                   </motion.div>
                 ))}
               </div>
