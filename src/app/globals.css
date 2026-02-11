@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy-950: #0a0b14;
-  --color-navy-900: #0d0f1a;
-  --color-navy-800: #121525;
-  --color-navy-700: #1a1d30;
-  --color-navy-600: #252940;
+  --color-navy-950: #0a0e27;
+  --color-navy-900: #0e1230;
+  --color-navy-800: #141938;
+  --color-navy-700: #1c2145;
+  --color-navy-600: #2a3055;
   --color-cyan-400: #22d3ee;
   --color-cyan-500: #06b6d4;
   --color-blue-500: #3b82f6;
   --color-blue-600: #2563eb;
+  --color-purple-400: #a78bfa;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
@@ -76,8 +77,8 @@ body {
 
 /* Glass effect */
 .glass {
-  background: rgba(13, 15, 26, 0.8);
-  backdrop-filter: blur(12px);
+  background: rgba(10, 14, 39, 0.85);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(34, 211, 238, 0.1);
 }
 
