@@ -1,0 +1,145 @@
+{
+  "nav": {
+    "services": "Hizmetler",
+    "portfolio": "Çalışmalar",
+    "process": "Süreç",
+    "tech": "Teknoloji",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "getInTouch": "İletişime Geçin"
+  },
+  "hero": {
+    "title": "Dijital Deneyimler",
+    "titleHighlight": "İnşa Ediyoruz",
+    "tagline": "Code. Create. Launch.",
+    "description": "Yapay zeka destekli web çözümleri, otomasyon ve tasarım ile işletmelerin dijital dünyada başlamasına ve büyümesine yardımcı oluyoruz.",
+    "cta1": "Çalışmalarımızı Görün",
+    "cta2": "İletişime Geçin"
+  },
+  "services": {
+    "badge": "Ne Yapıyoruz",
+    "title": "Hizmetlerimiz",
+    "subtitle": "Olağanüstü dijital çözümler sunmak için son teknoloji tasarımı güçlü teknolojiyle birleştiriyoruz.",
+    "web": {
+      "title": "Web Tasarım ve Geliştirme",
+      "description": "Son teknolojilerle oluşturulmuş modern, duyarlı web siteleri. Açılış sayfalarından karmaşık web uygulamalarına."
+    },
+    "ai": {
+      "title": "Yapay Zeka ve Otomasyon",
+      "description": "Operasyonlarınızı kolaylaştıran akıllı iş akışları, sohbet robotları ve yapay zeka destekli iş çözümleri."
+    },
+    "brand": {
+      "title": "Marka Kimliği",
+      "description": "İşletmenizi öne çıkaran logo tasarımı, görsel kimlik ve marka stratejisi."
+    },
+    "systems": {
+      "title": "Sistem Entegrasyonu",
+      "description": "Sorunsuz operasyonlar için CRM, WhatsApp otomasyonu, muhasebe sistemleri ve API entegrasyonları."
+    }
+  },
+  "portfolio": {
+    "badge": "Çalışmalarımız",
+    "title": "Öne Çıkan Projeler",
+    "subtitle": "Web geliştirme, markalaşma ve dijital çözümler alanındaki son çalışmalarımızdan bir seçki.",
+    "viewProject": "Projeyi Görüntüle",
+    "projects": {
+      "luxefilms": {
+        "name": "LUXEFILMS",
+        "category": "Film Yapımı",
+        "description": "Sinematik tasarım ve akıcı animasyonlarla film yapım şirketi web sitesi."
+      },
+      "dvn": {
+        "name": "DVN Logistics",
+        "category": "Lojistik ve Nakliye",
+        "description": "Gerçek zamanlı takipli uluslararası lojistik ve nakliye platformu."
+      },
+      "divan": {
+        "name": "Divan Tours",
+        "category": "Turizm ve Seyahat",
+        "description": "Rezervasyon entegrasyonlu turizm ve seyahat acentesi web sitesi."
+      },
+      "seen": {
+        "name": "Seen Film",
+        "category": "Belgesel Yapımı",
+        "description": "Ödüllü içerikleri sergileyen belgesel yapım evi."
+      },
+      "dewan": {
+        "name": "Dewan Consulting",
+        "category": "Hukuk ve İş Danışmanlığı",
+        "description": "Profesyonel kurumsal tasarıma sahip hukuk ve iş danışmanlığı firması."
+      }
+    }
+  },
+  "process": {
+    "badge": "Nasıl Çalışıyoruz",
+    "title": "Sürecimiz",
+    "subtitle": "Vizyonunuzu hayata geçirmek için konseptten lansmana kadar düzenli bir yaklaşım.",
+    "steps": {
+      "discover": {
+        "title": "Keşfet",
+        "description": "Proje kapsamını belirlemek için işletmenizi, hedeflerinizi ve hedef kitlenizi öğreniyoruz."
+      },
+      "design": {
+        "title": "Tasarla",
+        "description": "Marka kimliğinize uygun çarpıcı görsel konseptler ve prototipler oluşturuyoruz."
+      },
+      "develop": {
+        "title": "Geliştir",
+        "description": "En son teknolojileri ve en iyi uygulamaları kullanarak modern, ölçeklenebilir kodla inşa ediyoruz."
+      },
+      "deploy": {
+        "title": "Yayınla",
+        "description": "Projenizi başlatıyor ve performans, SEO ve kullanıcı deneyimi için optimize ediyoruz."
+      }
+    }
+  },
+  "tech": {
+    "badge": "Araçlarımız",
+    "title": "Teknoloji Yığını",
+    "subtitle": "Güçlü dijital çözümler oluşturmak için en son ve en güçlü teknolojileri kullanıyoruz."
+  },
+  "about": {
+    "badge": "Hakkımızda",
+    "title": "Biz Kimiz",
+    "description": "KodLab, web geliştirme, yapay zeka otomasyonu ve akıllı iş çözümleri konusunda uzmanlaşmış bir dijital inovasyon laboratuvarıdır. İşletmelerin dijital dünyada başlamasına ve büyümesine yardımcı olmak için son teknoloji tasarımı güçlü teknolojiyle birleştiriyoruz.",
+    "description2": "Danışmanlık, lojistik ve medya prodüksiyonu alanlarındaki derin uzmanlığımızla, üstlendiğimiz her projeye benzersiz bir perspektif sunuyoruz.",
+    "stat1Label": "Tamamlanan Proje",
+    "stat1Value": "50+",
+    "stat2Label": "Mutlu Müşteri",
+    "stat2Value": "30+",
+    "stat3Label": "Yıllık Deneyim",
+    "stat3Value": "5+"
+  },
+  "contact": {
+    "badge": "İletişime Geçin",
+    "title": "Birlikte Çalışalım",
+    "subtitle": "Aklınızda bir proje mi var? Duymayı çok isteriz. Bize bir mesaj gönderin, en kısa sürede size geri dönelim.",
+    "form": {
+      "name": "Adınız",
+      "email": "E-posta Adresiniz",
+      "projectType": "Proje Türü",
+      "projectTypes": {
+        "web": "Web Tasarım ve Geliştirme",
+        "ai": "Yapay Zeka ve Otomasyon",
+        "brand": "Marka Kimliği",
+        "systems": "Sistem Entegrasyonu",
+        "other": "Diğer"
+      },
+      "message": "Mesajınız",
+      "send": "Mesaj Gönder",
+      "sending": "Gönderiliyor..."
+    },
+    "info": {
+      "email": "hello@kodlab.ai",
+      "whatsapp": "WhatsApp",
+      "location": "İstanbul, Türkiye"
+    }
+  },
+  "footer": {
+    "tagline": "Code. Create. Launch.",
+    "description": "Web geliştirme, otomasyon ve akıllı iş çözümleri konusunda uzmanlaşmış yapay zeka destekli dijital ajans.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "services": "Hizmetler",
+    "rights": "Tüm hakları saklıdır."
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "nav": {
+    "services": "Services",
+    "portfolio": "Our Work",
+    "process": "Process",
+    "tech": "Tech Stack",
+    "about": "About",
+    "contact": "Contact",
+    "getInTouch": "Get in Touch"
+  },
+  "hero": {
+    "title": "We Build Digital",
+    "titleHighlight": "Experiences",
+    "tagline": "Code. Create. Launch.",
+    "description": "AI-powered web solutions, automation, and design that help businesses launch and scale in the digital world.",
+    "cta1": "View Our Work",
+    "cta2": "Get in Touch"
+  },
+  "services": {
+    "badge": "What We Do",
+    "title": "Our Services",
+    "subtitle": "We combine cutting-edge design with powerful technology to deliver exceptional digital solutions.",
+    "web": {
+      "title": "Web Design & Development",
+      "description": "Modern responsive websites built with cutting-edge technologies. From landing pages to complex web applications."
+    },
+    "ai": {
+      "title": "AI & Automation",
+      "description": "Smart workflows, chatbots, and AI-powered business solutions that streamline your operations."
+    },
+    "brand": {
+      "title": "Brand Identity",
+      "description": "Logo design, visual identity, and brand strategy that makes your business stand out."
+    },
+    "systems": {
+      "title": "Systems Integration",
+      "description": "CRM, WhatsApp automation, accounting systems, and API integrations for seamless operations."
+    }
+  },
+  "portfolio": {
+    "badge": "Our Work",
+    "title": "Featured Projects",
+    "subtitle": "A selection of our recent work across web development, branding, and digital solutions.",
+    "viewProject": "View Project",
+    "projects": {
+      "luxefilms": {
+        "name": "LUXEFILMS",
+        "category": "Film Production",
+        "description": "Film production company website with cinematic design and smooth animations."
+      },
+      "dvn": {
+        "name": "DVN Logistics",
+        "category": "Logistics & Shipping",
+        "description": "International logistics and shipping platform with real-time tracking."
+      },
+      "divan": {
+        "name": "Divan Tours",
+        "category": "Tourism & Travel",
+        "description": "Tourism and travel agency website with booking integration."
+      },
+      "seen": {
+        "name": "Seen Film",
+        "category": "Documentary Production",
+        "description": "Documentary production house showcasing award-winning content."
+      },
+      "dewan": {
+        "name": "Dewan Consulting",
+        "category": "Legal & Business",
+        "description": "Legal and business consulting firm with professional corporate design."
+      }
+    }
+  },
+  "process": {
+    "badge": "How We Work",
+    "title": "Our Process",
+    "subtitle": "A streamlined approach to bring your vision to life, from concept to launch.",
+    "steps": {
+      "discover": {
+        "title": "Discover",
+        "description": "We learn about your business, goals, and target audience to define the project scope."
+      },
+      "design": {
+        "title": "Design",
+        "description": "We create stunning visual concepts and prototypes that align with your brand identity."
+      },
+      "develop": {
+        "title": "Develop",
+        "description": "We build with modern, scalable code using the latest technologies and best practices."
+      },
+      "deploy": {
+        "title": "Deploy",
+        "description": "We launch your project and optimize for performance, SEO, and user experience."
+      }
+    }
+  },
+  "tech": {
+    "badge": "Our Tools",
+    "title": "Tech Stack",
+    "subtitle": "We use the latest and most powerful technologies to build robust digital solutions."
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Who We Are",
+    "description": "KodLab is a digital innovation lab specializing in web development, AI automation, and smart business solutions. We combine cutting-edge design with powerful technology to help businesses launch and scale in the digital world.",
+    "description2": "With deep expertise in consulting, logistics, and media production, we bring a unique perspective to every project we undertake.",
+    "stat1Label": "Projects Delivered",
+    "stat1Value": "50+",
+    "stat2Label": "Happy Clients",
+    "stat2Value": "30+",
+    "stat3Label": "Years Experience",
+    "stat3Value": "5+"
+  },
+  "contact": {
+    "badge": "Get in Touch",
+    "title": "Let's Work Together",
+    "subtitle": "Have a project in mind? We'd love to hear about it. Send us a message and we'll get back to you as soon as possible.",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "projectType": "Project Type",
+      "projectTypes": {
+        "web": "Web Design & Development",
+        "ai": "AI & Automation",
+        "brand": "Brand Identity",
+        "systems": "Systems Integration",
+        "other": "Other"
+      },
+      "message": "Your Message",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "info": {
+      "email": "hello@kodlab.ai",
+      "whatsapp": "WhatsApp",
+      "location": "Istanbul, Turkey"
+    }
+  },
+  "footer": {
+    "tagline": "Code. Create. Launch.",
+    "description": "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "rights": "All rights reserved."
+  }
+}
