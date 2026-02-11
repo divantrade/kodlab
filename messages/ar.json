@@ -46,27 +46,32 @@
       "luxefilms": {
         "name": "LUXEFILMS",
         "category": "إنتاج أفلام",
-        "description": "موقع شركة إنتاج أفلام بتصميم سينمائي وحركات سلسة."
+        "description": "موقع شركة إنتاج أفلام بتصميم سينمائي وحركات سلسة.",
+        "url": ""
       },
       "dvn": {
         "name": "DVN Logistics",
         "category": "لوجستيات وشحن",
-        "description": "منصة لوجستيات وشحن دولي مع تتبع فوري."
+        "description": "منصة لوجستيات وشحن دولي مع تتبع فوري.",
+        "url": "https://dvnlog.com/ar"
       },
       "divan": {
         "name": "Divan Tours",
         "category": "سياحة وسفر",
-        "description": "موقع وكالة سياحة وسفر مع نظام حجز متكامل."
+        "description": "موقع وكالة سياحة وسفر مع نظام حجز متكامل.",
+        "url": "https://divantours.com/ar"
       },
       "seen": {
         "name": "Seen Film",
         "category": "إنتاج وثائقي",
-        "description": "دار إنتاج وثائقي تعرض محتوى حائز على جوائز."
+        "description": "دار إنتاج وثائقي تعرض محتوى حائز على جوائز.",
+        "url": "https://www.seenfilm.net/ar"
       },
       "dewan": {
         "name": "Dewan Consulting",
         "category": "استشارات قانونية وأعمال",
-        "description": "شركة استشارات قانونية وأعمال بتصميم مؤسسي احترافي."
+        "description": "شركة استشارات قانونية وأعمال بتصميم مؤسسي احترافي.",
+        "url": "https://www.aldewan.net/ar"
       }
     }
   },

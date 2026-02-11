@@ -46,27 +46,32 @@
       "luxefilms": {
         "name": "LUXEFILMS",
         "category": "Film Yapımı",
-        "description": "Sinematik tasarım ve akıcı animasyonlarla film yapım şirketi web sitesi."
+        "description": "Sinematik tasarım ve akıcı animasyonlarla film yapım şirketi web sitesi.",
+        "url": ""
       },
       "dvn": {
         "name": "DVN Logistics",
         "category": "Lojistik ve Nakliye",
-        "description": "Gerçek zamanlı takipli uluslararası lojistik ve nakliye platformu."
+        "description": "Gerçek zamanlı takipli uluslararası lojistik ve nakliye platformu.",
+        "url": "https://dvnlog.com/tr"
       },
       "divan": {
         "name": "Divan Tours",
         "category": "Turizm ve Seyahat",
-        "description": "Rezervasyon entegrasyonlu turizm ve seyahat acentesi web sitesi."
+        "description": "Rezervasyon entegrasyonlu turizm ve seyahat acentesi web sitesi.",
+        "url": "https://divantours.com/tr"
       },
       "seen": {
         "name": "Seen Film",
         "category": "Belgesel Yapımı",
-        "description": "Ödüllü içerikleri sergileyen belgesel yapım evi."
+        "description": "Ödüllü içerikleri sergileyen belgesel yapım evi.",
+        "url": "https://www.seenfilm.net/tr"
       },
       "dewan": {
         "name": "Dewan Consulting",
         "category": "Hukuk ve İş Danışmanlığı",
-        "description": "Profesyonel kurumsal tasarıma sahip hukuk ve iş danışmanlığı firması."
+        "description": "Profesyonel kurumsal tasarıma sahip hukuk ve iş danışmanlığı firması.",
+        "url": "https://www.aldewan.net/tr"
       }
     }
   },

@@ -46,27 +46,32 @@
       "luxefilms": {
         "name": "LUXEFILMS",
         "category": "Film Production",
-        "description": "Film production company website with cinematic design and smooth animations."
+        "description": "Film production company website with cinematic design and smooth animations.",
+        "url": ""
       },
       "dvn": {
         "name": "DVN Logistics",
         "category": "Logistics & Shipping",
-        "description": "International logistics and shipping platform with real-time tracking."
+        "description": "International logistics and shipping platform with real-time tracking.",
+        "url": "https://dvnlog.com/en"
       },
       "divan": {
         "name": "Divan Tours",
         "category": "Tourism & Travel",
-        "description": "Tourism and travel agency website with booking integration."
+        "description": "Tourism and travel agency website with booking integration.",
+        "url": "https://divantours.com/en"
       },
       "seen": {
         "name": "Seen Film",
         "category": "Documentary Production",
-        "description": "Documentary production house showcasing award-winning content."
+        "description": "Documentary production house showcasing award-winning content.",
+        "url": "https://www.seenfilm.net/en"
       },
       "dewan": {
         "name": "Dewan Consulting",
         "category": "Legal & Business",
-        "description": "Legal and business consulting firm with professional corporate design."
+        "description": "Legal and business consulting firm with professional corporate design.",
+        "url": "https://www.aldewan.net/en"
       }
     }
   },

@@ -36,14 +36,16 @@ function ProjectCard({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
 }) {
-  return (
+  const url = t(`projects.${projectKey}.url`);
+
+  const card = (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -6 }}
-      className="group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-all duration-300"
+      className={`group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-all duration-300${url ? " cursor-pointer" : ""}`}
     >
       <div
         className={`relative h-52 sm:h-56 bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden`}
@@ -84,6 +86,16 @@ function ProjectCard({
       </div>
     </motion.div>
   );
+
+  if (url) {
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        {card}
+      </a>
+    );
+  }
+
+  return card;
 }
 
 export default function Portfolio() {
