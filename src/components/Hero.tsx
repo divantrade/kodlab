@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { KodLabLogo } from "./KodLabLogo";
 
 function ParticleField() {
   const [particles, setParticles] = useState<
@@ -59,21 +60,32 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
-      {/* Background effects */}
+      {/* Background effects - Glow Backdrop */}
       <div className="absolute inset-0">
         <div className="absolute top-[20%] left-[15%] w-[500px] h-[500px] bg-cyan-500/8 rounded-full blur-[150px]" />
         <div className="absolute bottom-[20%] right-[15%] w-[400px] h-[400px] bg-blue-600/8 rounded-full blur-[150px]" />
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[200px]" />
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[45%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-400/10 rounded-full blur-[100px] mix-blend-screen" />
       </div>
 
       <ParticleField />
 
       <div className="relative max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32">
+        {/* Hero Logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-8"
+        >
+          <KodLabLogo size={100} className="justify-center" />
+        </motion.div>
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-10"
         >
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -86,7 +98,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-[1.1] mb-8 tracking-tight"
         >
           {t("title")}
@@ -98,7 +110,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
           className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-gray-400 mb-12 leading-relaxed"
         >
           {t("description")}
@@ -108,7 +120,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
+          transition={{ duration: 0.7, delay: 0.65 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-5"
         >
           <a
