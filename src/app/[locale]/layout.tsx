@@ -15,12 +15,22 @@ export const metadata: Metadata = {
       "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
     siteName: "KodLab",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "KodLab — Code. Create. Launch.",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "KodLab — Code. Create. Launch.",
     description:
       "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
+    images: ["/og-image.png"],
   },
 };
 
