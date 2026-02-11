@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { KodLabLogo } from "./KodLabLogo";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -25,11 +26,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center font-bold text-navy-950 text-base">
-                K
-              </div>
-              <span className="text-lg font-bold text-white">KodLab</span>
+            <div className="mb-5">
+              <KodLabLogo size={36} />
             </div>
             <p className="text-sm text-cyan-400 font-mono mb-3 tracking-wider">
               {t("tagline")}
