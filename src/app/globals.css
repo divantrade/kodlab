@@ -29,7 +29,7 @@ body {
   background: var(--color-navy-950);
   color: #e2e8f0;
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Custom scrollbar */
