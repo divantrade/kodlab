@@ -25,12 +25,22 @@ export const metadata: Metadata = {
     siteName: "KodLab",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "KodLab — Code. Create. Launch.",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "KodLab — Code. Create. Launch.",
     description:
       "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
+    images: ["/opengraph-image"],
   },
   metadataBase: new URL("https://kodlab.ai"),
 };
