@@ -17,6 +17,7 @@ export const metadata: Metadata = {
       { url: "/favicon.ico", sizes: "32x32" },
     ],
   },
+  metadataBase: new URL("https://kodlab.ai"),
   openGraph: {
     title: "KodLab — Code. Create. Launch.",
     description:
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "https://kodlab.ai/og-image.png",
+        width: 2408,
+        height: 1272,
         alt: "KodLab — Code. Create. Launch.",
         type: "image/png",
       },
@@ -40,13 +41,8 @@ export const metadata: Metadata = {
     title: "KodLab — Code. Create. Launch.",
     description:
       "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
-    images: ["/og-image.png"],
+    images: ["https://kodlab.ai/og-image.png"],
   },
-  metadataBase: new URL(
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : process.env.NEXT_PUBLIC_SITE_URL || "https://kodlab.ai"
-  ),
 };
 
 export default function RootLayout({

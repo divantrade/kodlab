@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "https://kodlab.ai/og-image.png",
+        width: 2408,
+        height: 1272,
         alt: "KodLab — Code. Create. Launch.",
         type: "image/png",
       },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "KodLab — Code. Create. Launch.",
     description:
       "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
-    images: ["/og-image.png"],
+    images: ["https://kodlab.ai/og-image.png"],
   },
 };
 
