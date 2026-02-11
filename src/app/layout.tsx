@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "KodLab — Code. Create. Launch.",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "KodLab — Code. Create. Launch.",
     description:
       "AI-powered digital agency specializing in web development, automation, and smart business solutions.",
-    images: ["/opengraph-image"],
+    images: ["/og-image.png"],
   },
   metadataBase: new URL(
     process.env.VERCEL_URL
