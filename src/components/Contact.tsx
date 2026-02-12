@@ -1,13 +1,53 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import SectionHeader from "./SectionHeader";
+
+type FormStatus = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
   const t = useTranslations("contact");
+  const locale = useLocale();
+  const [status, setStatus] = useState<FormStatus>("idle");
 
   const projectTypes = ["web", "ai", "brand", "systems", "other"] as const;
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          project_type: formData.get("project_type"),
+          message: formData.get("message"),
+          locale,
+        }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
 
   return (
     <section id="contact" className="py-24 sm:py-32 relative">
@@ -27,22 +67,30 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-3 space-y-5"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
+            <input type="hidden" name="subject" value="New message from KodLab website" />
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <input
                 type="text"
+                name="name"
+                required
                 placeholder={t("form.name")}
                 className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all text-sm"
               />
               <input
                 type="email"
+                name="email"
+                required
                 placeholder={t("form.email")}
                 className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all text-sm"
               />
             </div>
 
             <select
+              name="project_type"
+              required
               className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-gray-400 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all text-sm appearance-none"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E")`,
@@ -62,6 +110,8 @@ export default function Contact() {
             </select>
 
             <textarea
+              name="message"
+              required
               rows={5}
               placeholder={t("form.message")}
               className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all resize-none text-sm"
@@ -69,10 +119,18 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 glow-cyan hover:scale-[1.02] text-sm"
+              disabled={status === "sending"}
+              className="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 glow-cyan hover:scale-[1.02] text-sm disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              {t("form.send")}
+              {status === "sending" ? t("form.sending") : t("form.send")}
             </button>
+
+            {status === "success" && (
+              <p className="text-green-400 text-sm">{t("form.success")}</p>
+            )}
+            {status === "error" && (
+              <p className="text-red-400 text-sm">{t("form.error")}</p>
+            )}
           </motion.form>
 
           {/* Contact Info */}

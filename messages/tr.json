@@ -132,7 +132,9 @@
       },
       "message": "Mesajınız",
       "send": "Mesaj Gönder",
-      "sending": "Gönderiliyor..."
+      "sending": "Gönderiliyor...",
+      "success": "Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.",
+      "error": "Bir hata oluştu. Lütfen tekrar deneyin veya doğrudan e-posta gönderin."
     },
     "info": {
       "email": "hello@kodlab.ai",
