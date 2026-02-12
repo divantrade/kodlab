@@ -7,10 +7,12 @@ import TechStack from "@/components/TechStack";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SafariFallback from "@/components/SafariFallback";
 
 export default function Home() {
   return (
     <main className="grid-bg min-h-screen w-full">
+      <SafariFallback />
       <Navbar />
       <Hero />
       <Services />

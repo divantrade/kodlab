@@ -29,7 +29,6 @@ body {
   background: var(--color-navy-950);
   color: #e2e8f0;
   font-family: var(--font-sans);
-  overflow-x: clip;
 }
 
 /* Custom scrollbar */
@@ -56,6 +55,7 @@ body {
     linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
+  overflow-x: clip;
 }
 
 /* Glow effects */
@@ -106,4 +106,14 @@ section {
   border-radius: 13px;
   background: linear-gradient(135deg, rgba(34, 211, 238, 0.3), transparent, rgba(59, 130, 246, 0.3));
   z-index: -1;
+}
+
+/* Safari fallback: force visibility if Framer Motion whileInView fails.
+   Only on touch devices (mobile) where the IntersectionObserver bug occurs,
+   so desktop hover animations are preserved. */
+@media (hover: none) {
+  html.loaded section [style] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
