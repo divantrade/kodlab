@@ -15,36 +15,60 @@ export async function POST(req: Request) {
     const { name, email, project_type, message, locale } = body;
     const lang = (["ar", "tr", "en"].includes(locale) ? locale : "en") as Locale;
 
-    // 1. Send to Web3Forms (notification to hello@kodlab.ai)
-    const web3Res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-        subject: "New message from KodLab website",
-        name,
-        email,
-        project_type,
-        message,
-      }),
-    });
+    let notificationSent = false;
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const web3Data = await web3Res.json();
-    if (!web3Data.success) {
+    // 1. Try Web3Forms (notification to hello@kodlab.ai)
+    try {
+      const web3Res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: "New message from KodLab website",
+          name,
+          email,
+          project_type,
+          message,
+        }),
+      });
+      const web3Data = await web3Res.json();
+      if (web3Data.success) notificationSent = true;
+      else console.error("Web3Forms rejected:", web3Data);
+    } catch (w3err) {
+      console.error("Web3Forms failed:", w3err);
+    }
+
+    // 2. Try Resend notification to hello@kodlab.ai (fallback / second channel)
+    try {
+      await resend.emails.send({
+        from: "KodLab <noreply@kodlab.ai>",
+        to: "hello@kodlab.ai",
+        subject: `New contact from ${name}`,
+        html: `<p><strong>Name:</strong> ${name}</p>
+               <p><strong>Email:</strong> ${email}</p>
+               <p><strong>Project:</strong> ${project_type}</p>
+               <p><strong>Message:</strong><br/>${message}</p>`,
+      });
+      notificationSent = true;
+    } catch (resendErr) {
+      console.error("Resend notification failed:", resendErr);
+    }
+
+    if (!notificationSent) {
       return NextResponse.json({ success: false, error: "Failed to send message" }, { status: 500 });
     }
 
-    // 2. Send auto-reply to the sender (non-blocking — form still succeeds if this fails)
+    // 3. Send auto-reply to the sender (non-blocking)
     try {
-      const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
         from: "KodLab <noreply@kodlab.ai>",
         to: email,
         subject: subjects[lang],
         html: getAutoReplyHTML(name, lang),
       });
-    } catch (replyError) {
-      console.error("Auto-reply failed (form still submitted):", replyError);
+    } catch (replyErr) {
+      console.error("Auto-reply failed (form still submitted):", replyErr);
     }
 
     return NextResponse.json({ success: true });
