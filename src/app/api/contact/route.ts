@@ -34,14 +34,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: "Failed to send message" }, { status: 500 });
     }
 
-    // 2. Send auto-reply to the sender
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
-      from: "KodLab <noreply@kodlab.ai>",
-      to: email,
-      subject: subjects[lang],
-      html: getAutoReplyHTML(name, lang),
-    });
+    // 2. Send auto-reply to the sender (non-blocking — form still succeeds if this fails)
+    try {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      await resend.emails.send({
+        from: "KodLab <noreply@kodlab.ai>",
+        to: email,
+        subject: subjects[lang],
+        html: getAutoReplyHTML(name, lang),
+      });
+    } catch (replyError) {
+      console.error("Auto-reply failed (form still submitted):", replyError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
