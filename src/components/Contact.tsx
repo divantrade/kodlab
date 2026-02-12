@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
@@ -9,6 +9,7 @@ type FormStatus = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
   const t = useTranslations("contact");
+  const locale = useLocale();
   const [status, setStatus] = useState<FormStatus>("idle");
 
   const projectTypes = ["web", "ai", "brand", "systems", "other"] as const;
@@ -29,6 +30,7 @@ export default function Contact() {
           email: formData.get("email"),
           project_type: formData.get("project_type"),
           message: formData.get("message"),
+          locale,
         }),
       });
       const data = await res.json();
