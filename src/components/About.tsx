@@ -3,9 +3,11 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 export default function About() {
   const t = useTranslations("about");
+  const reduceMotion = useReducedMotion();
 
   const stats = [
     { value: t("stat1Value"), label: t("stat1Label") },
@@ -20,14 +22,14 @@ export default function About() {
 
         <div className="max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.6 }}
             className="relative p-8 sm:p-12 rounded-2xl bg-navy-800/40 border border-navy-700/80 overflow-hidden"
           >
-            {/* Glow effect */}
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-[100px]" />
+            {/* Glow effect - reduced blur for better mobile performance */}
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-[60px] sm:blur-[80px]" />
 
             <div className="relative">
               <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
@@ -42,10 +44,10 @@ export default function About() {
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={reduceMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
                     className="text-center p-4 sm:p-6 rounded-xl bg-navy-900/50 border border-navy-700/50"
                   >
                     <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold gradient-text mb-2">

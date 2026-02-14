@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const projectKeys = ["luxefilms", "dvn", "divan", "seen", "dewan"] as const;
 
@@ -28,6 +29,7 @@ function ProjectCard({
   gradient,
   tech,
   t,
+  reduceMotion,
 }: {
   projectKey: string;
   index: number;
@@ -35,16 +37,17 @@ function ProjectCard({
   tech: string[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
+  reduceMotion: boolean;
 }) {
   const url = t(`projects.${projectKey}.url`);
 
   const card = (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -6 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={reduceMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
+      whileHover={reduceMotion ? undefined : { y: -6 }}
       className={`group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-all duration-300${url ? " cursor-pointer" : ""}`}
     >
       <div
@@ -55,7 +58,7 @@ function ProjectCard({
           {t(`projects.${projectKey}.name`)}
         </div>
         <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/50 transition-all duration-300 flex items-center justify-center">
-          <span className="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 text-white text-sm font-semibold px-6 py-2.5 rounded-xl bg-cyan-500/90 backdrop-blur-sm transition-all duration-300 shadow-lg shadow-cyan-500/20">
+          <span className="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 text-white text-sm font-semibold px-6 py-2.5 rounded-xl bg-cyan-500/90 transition-all duration-300 shadow-lg shadow-cyan-500/20">
             {t("viewProject")}
           </span>
         </div>
@@ -100,6 +103,7 @@ function ProjectCard({
 
 export default function Portfolio() {
   const t = useTranslations("portfolio");
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="portfolio" className="py-24 sm:py-32">
@@ -119,6 +123,7 @@ export default function Portfolio() {
               gradient={projectGradients[index]}
               tech={projectTech[key]}
               t={t}
+              reduceMotion={reduceMotion}
             />
           ))}
         </div>
@@ -132,6 +137,7 @@ export default function Portfolio() {
               gradient={projectGradients[index + 3]}
               tech={projectTech[key]}
               t={t}
+              reduceMotion={reduceMotion}
             />
           ))}
         </div>

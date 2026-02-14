@@ -25,10 +25,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Disable smooth scroll for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--color-navy-950);
   color: #e2e8f0;
   font-family: var(--font-sans);
+  /* Improve text rendering on Safari */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom scrollbar */
@@ -55,31 +65,50 @@ body {
     linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
+  /* Use overflow: hidden as fallback for older browsers that don't support clip */
+  overflow-x: hidden;
   overflow-x: clip;
 }
 
-/* Glow effects */
+/* Glow effects - reduced for mobile performance */
 .glow-cyan {
   box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 60px rgba(6, 182, 212, 0.1);
+}
+
+@media (hover: none) {
+  .glow-cyan {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+  }
 }
 
 .glow-text {
   text-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
 }
 
-/* Gradient text */
+/* Gradient text with Safari fallback */
 .gradient-text {
   background: linear-gradient(135deg, #22d3ee, #3b82f6);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-/* Glass effect */
+/* Glass effect with Safari/mobile optimizations */
 .glass {
-  background: rgba(10, 14, 39, 0.85);
-  backdrop-filter: blur(16px);
+  background: rgba(10, 14, 39, 0.9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(34, 211, 238, 0.1);
+}
+
+/* Disable backdrop-filter on low-end devices for better performance */
+@media (hover: none) and (pointer: coarse) {
+  .glass {
+    background: rgba(10, 14, 39, 0.95);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 /* RTL support */
@@ -108,12 +137,40 @@ section {
   z-index: -1;
 }
 
-/* Safari fallback: force visibility if Framer Motion whileInView fails.
-   Only on touch devices (mobile) where the IntersectionObserver bug occurs,
-   so desktop hover animations are preserved. */
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Safari/mobile fallback: force visibility if Framer Motion whileInView fails.
+   Applied on touch devices (mobile) where IntersectionObserver can be buggy.
+   The .loaded class is added by SafariFallback component after initial load. */
 @media (hover: none) {
   html.loaded section [style] {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* Additional Safari fix: ensure elements with inline styles become visible */
+@supports (-webkit-touch-callout: none) {
+  html.loaded [style*="opacity"] {
+    opacity: 1 !important;
+  }
+  html.loaded [style*="transform"] {
+    transform: none !important;
+  }
+}
+
+/* GPU acceleration hints for animated elements */
+.will-animate {
+  will-change: transform, opacity;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }

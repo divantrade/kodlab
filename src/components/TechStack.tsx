@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const technologies = [
   { name: "Next.js", abbr: "Nx", gradient: "from-white/20 to-gray-400/20", text: "text-white" },
@@ -21,6 +22,7 @@ const technologies = [
 
 export default function TechStack() {
   const t = useTranslations("tech");
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="tech" className="py-24 sm:py-32">
@@ -35,11 +37,11 @@ export default function TechStack() {
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              whileHover={{ scale: 1.08, y: -5 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={reduceMotion ? { duration: 0 } : { duration: 0.4, delay: index * 0.05 }}
+              whileHover={reduceMotion ? undefined : { scale: 1.08, y: -5 }}
               className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-all duration-300"
             >
               <div
