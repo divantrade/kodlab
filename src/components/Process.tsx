@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const stepIcons = [
   <svg key="discover" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -23,6 +24,7 @@ const stepKeys = ["discover", "design", "develop", "deploy"] as const;
 
 export default function Process() {
   const t = useTranslations("process");
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="process" className="py-24 sm:py-32 relative">
@@ -41,10 +43,10 @@ export default function Process() {
           {stepKeys.map((key, index) => (
             <motion.div
               key={key}
-              initial={{ opacity: 0, y: 30 }}
+              initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={reduceMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.15 }}
               className="relative text-center p-6 sm:p-8"
             >
               <div className="relative mx-auto mb-8 w-fit">

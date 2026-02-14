@@ -4,12 +4,14 @@ import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
   const t = useTranslations("contact");
   const locale = useLocale();
+  const reduceMotion = useReducedMotion();
   const [status, setStatus] = useState<FormStatus>("idle");
 
   const projectTypes = ["web", "ai", "brand", "systems", "other"] as const;
@@ -62,10 +64,10 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {/* Contact Form */}
           <motion.form
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.6 }}
             className="lg:col-span-3 space-y-5"
             onSubmit={handleSubmit}
           >
@@ -135,10 +137,10 @@ export default function Contact() {
 
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
             className="lg:col-span-2 space-y-5"
           >
             <div className="flex items-start gap-4 p-5 sm:p-6 rounded-2xl bg-navy-800/40 border border-navy-700/80">

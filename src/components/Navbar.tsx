@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { KodLabLogo } from "./KodLabLogo";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const localeLabels: Record<string, string> = {
   en: "EN",
@@ -17,6 +18,7 @@ export default function Navbar() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -54,9 +56,9 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
+      initial={reduceMotion ? { y: 0 } : { y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={reduceMotion ? { duration: 0 } : { duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "glass shadow-lg" : "bg-transparent"
       }`}
