@@ -1,9 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const technologies = [
   { name: "Next.js", abbr: "Nx", gradient: "from-white/20 to-gray-400/20", text: "text-white" },
@@ -22,7 +21,6 @@ const technologies = [
 
 export default function TechStack() {
   const t = useTranslations("tech");
-  const reduceMotion = useReducedMotion();
 
   return (
     <section id="tech" className="py-24 sm:py-32">
@@ -35,26 +33,20 @@ export default function TechStack() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5">
           {technologies.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={reduceMotion ? { duration: 0 } : { duration: 0.4, delay: index * 0.05 }}
-              whileHover={reduceMotion ? undefined : { scale: 1.08, y: -5 }}
-              className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-all duration-300"
-            >
-              <div
-                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${tech.gradient} flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-all`}
-              >
-                <span className={`text-lg font-bold font-mono ${tech.text}`}>
-                  {tech.abbr}
+            <FadeIn key={tech.name} delay={index * 50} scale>
+              <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-all duration-300 hover:scale-105 hover:-translate-y-1">
+                <div
+                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${tech.gradient} flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-all`}
+                >
+                  <span className={`text-lg font-bold font-mono ${tech.text}`}>
+                    {tech.abbr}
+                  </span>
+                </div>
+                <span className="text-xs text-gray-400 group-hover:text-gray-200 text-center font-medium transition-colors leading-tight">
+                  {tech.name}
                 </span>
               </div>
-              <span className="text-xs text-gray-400 group-hover:text-gray-200 text-center font-medium transition-colors leading-tight">
-                {tech.name}
-              </span>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

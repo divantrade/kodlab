@@ -1,9 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const serviceIcons = [
   <svg key="web" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,7 +24,6 @@ const serviceKeys = ["web", "ai", "brand", "systems"] as const;
 
 export default function Services() {
   const t = useTranslations("services");
-  const reduceMotion = useReducedMotion();
 
   return (
     <section id="services" className="py-24 sm:py-32">
@@ -38,25 +36,19 @@ export default function Services() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {serviceKeys.map((key, index) => (
-            <motion.div
-              key={key}
-              initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={reduceMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
-              whileHover={reduceMotion ? undefined : { y: -8 }}
-              className="group relative p-7 sm:p-8 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-all duration-300 hover:bg-navy-800/80"
-            >
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:from-cyan-500/30 group-hover:to-blue-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10 transition-all duration-300">
-                {serviceIcons[index]}
+            <FadeIn key={key} delay={index * 100}>
+              <div className="group relative p-7 sm:p-8 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-all duration-300 hover:bg-navy-800/80 hover:-translate-y-2">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:from-cyan-500/30 group-hover:to-blue-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10 transition-all duration-300">
+                  {serviceIcons[index]}
+                </div>
+                <h3 className="text-lg font-bold text-white mb-3">
+                  {t(`${key}.title`)}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {t(`${key}.description`)}
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">
-                {t(`${key}.title`)}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {t(`${key}.description`)}
-              </p>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
       </div>

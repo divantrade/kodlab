@@ -1,9 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const projectKeys = ["luxefilms", "dvn", "divan", "seen", "dewan"] as const;
 
@@ -29,7 +28,6 @@ function ProjectCard({
   gradient,
   tech,
   t,
-  reduceMotion,
 }: {
   projectKey: string;
   index: number;
@@ -37,57 +35,53 @@ function ProjectCard({
   tech: string[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   t: any;
-  reduceMotion: boolean;
 }) {
   const url = t(`projects.${projectKey}.url`);
 
   const card = (
-    <motion.div
-      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={reduceMotion ? { duration: 0 } : { duration: 0.5, delay: index * 0.1 }}
-      whileHover={reduceMotion ? undefined : { y: -6 }}
-      className={`group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-all duration-300${url ? " cursor-pointer" : ""}`}
-    >
+    <FadeIn delay={index * 100}>
       <div
-        className={`relative h-52 sm:h-56 bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden`}
+        className={`group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-all duration-300 hover:-translate-y-1.5${url ? " cursor-pointer" : ""}`}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_70%)]" />
-        <div className="text-3xl sm:text-4xl font-extrabold text-white/15 font-mono tracking-wider select-none">
-          {t(`projects.${projectKey}.name`)}
-        </div>
-        <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/50 transition-all duration-300 flex items-center justify-center">
-          <span className="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 text-white text-sm font-semibold px-6 py-2.5 rounded-xl bg-cyan-500/90 transition-all duration-300 shadow-lg shadow-cyan-500/20">
-            {t("viewProject")}
-          </span>
-        </div>
-      </div>
-
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-3 gap-3">
-          <h3 className="text-lg font-bold text-white">
+        <div
+          className={`relative h-52 sm:h-56 bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden`}
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_70%)]" />
+          <div className="text-3xl sm:text-4xl font-extrabold text-white/15 font-mono tracking-wider select-none">
             {t(`projects.${projectKey}.name`)}
-          </h3>
-          <span className="text-xs text-cyan-400 font-mono whitespace-nowrap px-2.5 py-1 rounded-md bg-cyan-500/10">
-            {t(`projects.${projectKey}.category`)}
-          </span>
-        </div>
-        <p className="text-gray-400 text-sm mb-5 leading-relaxed">
-          {t(`projects.${projectKey}.description`)}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {tech.map((item) => (
-            <span
-              key={item}
-              className="px-3 py-1.5 rounded-lg bg-navy-700/60 text-xs text-gray-300 font-mono border border-navy-600/50"
-            >
-              {item}
+          </div>
+          <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/50 transition-all duration-300 flex items-center justify-center">
+            <span className="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 text-white text-sm font-semibold px-6 py-2.5 rounded-xl bg-cyan-500/90 backdrop-blur-sm transition-all duration-300 shadow-lg shadow-cyan-500/20">
+              {t("viewProject")}
             </span>
-          ))}
+          </div>
+        </div>
+
+        <div className="p-6">
+          <div className="flex items-center justify-between mb-3 gap-3">
+            <h3 className="text-lg font-bold text-white">
+              {t(`projects.${projectKey}.name`)}
+            </h3>
+            <span className="text-xs text-cyan-400 font-mono whitespace-nowrap px-2.5 py-1 rounded-md bg-cyan-500/10">
+              {t(`projects.${projectKey}.category`)}
+            </span>
+          </div>
+          <p className="text-gray-400 text-sm mb-5 leading-relaxed">
+            {t(`projects.${projectKey}.description`)}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {tech.map((item) => (
+              <span
+                key={item}
+                className="px-3 py-1.5 rounded-lg bg-navy-700/60 text-xs text-gray-300 font-mono border border-navy-600/50"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-    </motion.div>
+    </FadeIn>
   );
 
   if (url) {
@@ -103,7 +97,6 @@ function ProjectCard({
 
 export default function Portfolio() {
   const t = useTranslations("portfolio");
-  const reduceMotion = useReducedMotion();
 
   return (
     <section id="portfolio" className="py-24 sm:py-32">
@@ -123,7 +116,6 @@ export default function Portfolio() {
               gradient={projectGradients[index]}
               tech={projectTech[key]}
               t={t}
-              reduceMotion={reduceMotion}
             />
           ))}
         </div>
@@ -137,7 +129,6 @@ export default function Portfolio() {
               gradient={projectGradients[index + 3]}
               tech={projectTech[key]}
               t={t}
-              reduceMotion={reduceMotion}
             />
           ))}
         </div>
