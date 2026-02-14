@@ -9,6 +9,11 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SafariFallback from "@/components/SafariFallback";
 
+// Force dynamic rendering for Safari compatibility
+// Prevents aggressive caching that causes slow page refreshes
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default function Home() {
   return (
     <main className="grid-bg min-h-screen w-full">
