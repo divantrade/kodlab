@@ -4,13 +4,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 const PRIMARY_DOMAIN = "kodlab.ai";
 
-const intlMiddleware = createMiddleware(routing);
+const intlProxy = createMiddleware(routing);
 
 /**
- * Safari-compatible middleware with proper cache headers
+ * Safari-compatible proxy with proper cache headers
  * Addresses Safari's aggressive caching behavior that causes slow page refreshes
+ * 
+ * Uses Next.js 16 "proxy" convention (replaces deprecated "middleware")
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const hostname = request.headers.get("host") || "";
   const pathname = request.nextUrl.pathname;
 
@@ -48,8 +50,8 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  // Get response from intl middleware
-  const response = intlMiddleware(request);
+  // Get response from intl proxy
+  const response = intlProxy(request);
 
   // Add Safari-compatible headers to all responses
   if (response) {

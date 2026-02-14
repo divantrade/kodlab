@@ -9,10 +9,9 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SafariFallback from "@/components/SafariFallback";
 
-// Force dynamic rendering for Safari compatibility
-// Prevents aggressive caching that causes slow page refreshes
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+// Use static generation with ISR for optimal Safari performance
+// Static pages load faster on Safari mobile; cache headers in proxy.ts handle revalidation
+export const revalidate = 3600; // Revalidate every hour
 
 export default function Home() {
   return (
