@@ -1,6 +1,18 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
+// Force dynamic rendering - no caching for API routes
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+// Safari-compatible cache headers for all responses
+const cacheHeaders = {
+  "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+  "Pragma": "no-cache",
+  "Expires": "0",
+  "Vary": "Accept, Accept-Encoding, Accept-Language, Origin",
+};
+
 type Locale = "ar" | "tr" | "en";
 
 const subjects: Record<Locale, string> = {
@@ -56,7 +68,10 @@ export async function POST(req: Request) {
     }
 
     if (!notificationSent) {
-      return NextResponse.json({ success: false, error: "Failed to send message" }, { status: 500 });
+      return NextResponse.json(
+        { success: false, error: "Failed to send message" },
+        { status: 500, headers: cacheHeaders }
+      );
     }
 
     // 3. Send auto-reply to the sender (non-blocking)
@@ -71,10 +86,13 @@ export async function POST(req: Request) {
       console.error("Auto-reply failed (form still submitted):", replyErr);
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { headers: cacheHeaders });
   } catch (error) {
     console.error("Contact form error:", error);
-    return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Internal server error" },
+      { status: 500, headers: cacheHeaders }
+    );
   }
 }
 
