@@ -14,9 +14,9 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
       {/* Soft ambient background - subtle and clean */}
-      <div className="absolute inset-0">
-        <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[800px] h-[600px] bg-cyan-500/[0.04] rounded-full blur-[180px]" />
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/[0.06] rounded-full blur-[160px]" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[600px] h-[400px] sm:w-[800px] sm:h-[600px] bg-cyan-500/[0.04] rounded-full blur-[80px] sm:blur-[100px]" />
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] bg-blue-600/[0.06] rounded-full blur-[60px] sm:blur-[80px]" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32">
