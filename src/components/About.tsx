@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
 
 export default function About() {
@@ -19,46 +19,37 @@ export default function About() {
         <SectionHeader badge={t("badge")} title={t("title")} subtitle="" />
 
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative p-8 sm:p-12 rounded-2xl bg-navy-800/40 border border-navy-700/80 overflow-hidden"
-          >
-            {/* Glow effect */}
-            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-[100px]" />
+          <FadeIn>
+            <div className="relative p-8 sm:p-12 rounded-2xl bg-navy-800/40 border border-navy-700/80 overflow-hidden">
+              {/* Glow effect */}
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-[100px]" />
 
-            <div className="relative">
-              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
-                {t("description")}
-              </p>
-              <p className="text-gray-400 leading-relaxed mb-12">
-                {t("description2")}
-              </p>
+              <div className="relative">
+                <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
+                  {t("description")}
+                </p>
+                <p className="text-gray-400 leading-relaxed mb-12">
+                  {t("description2")}
+                </p>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 sm:gap-8">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="text-center p-4 sm:p-6 rounded-xl bg-navy-900/50 border border-navy-700/50"
-                  >
-                    <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold gradient-text mb-2">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs sm:text-sm text-gray-400">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                ))}
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-4 sm:gap-8">
+                  {stats.map((stat, index) => (
+                    <FadeIn key={index} delay={index * 100}>
+                      <div className="text-center p-4 sm:p-6 rounded-xl bg-navy-900/50 border border-navy-700/50">
+                        <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold gradient-text mb-2">
+                          {stat.value}
+                        </div>
+                        <div className="text-xs sm:text-sm text-gray-400">
+                          {stat.label}
+                        </div>
+                      </div>
+                    </FadeIn>
+                  ))}
+                </div>
               </div>
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
 import { KodLabLogo } from "./KodLabLogo";
 
 export default function Hero() {
@@ -22,44 +21,24 @@ export default function Hero() {
 
       <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32">
         {/* Logo - clean entrance */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-10"
-        >
+        <div className="hero-fade mb-10">
           <KodLabLogo size={80} className="justify-center" />
-        </motion.div>
+        </div>
 
         {/* Headline - direct after logo */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-7 tracking-tight"
-        >
+        <h1 className="hero-fade hero-fade-d1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-7 tracking-tight">
           {t("title")}
           <br />
           <span className="gradient-text">{t("titleHighlight")}</span>
-        </motion.h1>
+        </h1>
 
         {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="max-w-xl mx-auto text-base sm:text-lg text-gray-400 mb-14 leading-relaxed"
-        >
+        <p className="hero-fade hero-fade-d2 max-w-xl mx-auto text-base sm:text-lg text-gray-400 mb-14 leading-relaxed">
           {t("description")}
-        </motion.p>
+        </p>
 
         {/* CTAs - pill-shaped buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
+        <div className="hero-fade hero-fade-d3 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#portfolio"
             onClick={(e) => scrollTo(e, "#portfolio")}
@@ -75,7 +54,7 @@ export default function Hero() {
           >
             {t("cta2")}
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

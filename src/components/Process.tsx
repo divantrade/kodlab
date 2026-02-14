@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
 
 const stepIcons = [
@@ -39,30 +39,25 @@ export default function Process() {
           <div className="hidden lg:block absolute top-[52px] left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
 
           {stepKeys.map((key, index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative text-center p-6 sm:p-8"
-            >
-              <div className="relative mx-auto mb-8 w-fit">
-                <div className="w-20 h-20 rounded-2xl bg-navy-800/80 border border-navy-700/80 flex items-center justify-center text-cyan-400 mx-auto shadow-lg shadow-navy-950/50">
-                  {stepIcons[index]}
+            <FadeIn key={key} delay={index * 150}>
+              <div className="relative text-center p-6 sm:p-8">
+                <div className="relative mx-auto mb-8 w-fit">
+                  <div className="w-20 h-20 rounded-2xl bg-navy-800/80 border border-navy-700/80 flex items-center justify-center text-cyan-400 mx-auto shadow-lg shadow-navy-950/50">
+                    {stepIcons[index]}
+                  </div>
+                  <span className="absolute -top-3 -end-3 w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white text-xs font-bold flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    {index + 1}
+                  </span>
                 </div>
-                <span className="absolute -top-3 -end-3 w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white text-xs font-bold flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                  {index + 1}
-                </span>
-              </div>
 
-              <h3 className="text-xl font-bold text-white mb-3">
-                {t(`steps.${key}.title`)}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-[240px] mx-auto">
-                {t(`steps.${key}.description`)}
-              </p>
-            </motion.div>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {t(`steps.${key}.title`)}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed max-w-[240px] mx-auto">
+                  {t(`steps.${key}.description`)}
+                </p>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </div>

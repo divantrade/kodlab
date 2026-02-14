@@ -78,6 +78,7 @@ body {
 /* Glass effect */
 .glass {
   background: rgba(10, 14, 39, 0.85);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(34, 211, 238, 0.1);
 }
@@ -108,11 +109,113 @@ section {
   z-index: -1;
 }
 
-/* Safari fallback: force visibility if Framer Motion whileInView fails.
-   Only on touch devices (mobile) where the IntersectionObserver bug occurs,
-   so desktop hover animations are preserved. */
-@media (hover: none) {
-  html.loaded section [style] {
+/* ──────────────────────────────────────────
+   CSS animations (replaces framer-motion)
+   Hardware-accelerated for Safari perf
+   ────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%) translateZ(0);
+  }
+  to {
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* Scroll-triggered elements (FadeIn component) */
+.fade-target {
+  opacity: 0;
+  will-change: transform, opacity;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.fade-target.in-view {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.fade-target.fade-scale.in-view {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+/* Hero entrance animations (play on page load) */
+.hero-fade {
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.hero-fade-d1 {
+  animation-delay: 0.15s;
+}
+
+.hero-fade-d2 {
+  animation-delay: 0.3s;
+}
+
+.hero-fade-d3 {
+  animation-delay: 0.45s;
+}
+
+/* Navbar entrance */
+.nav-enter {
+  will-change: transform;
+  animation: slideDown 0.6s ease-out both;
+}
+
+/* Dropdown animation */
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+.dropdown-enter {
+  animation: dropdownIn 0.2s ease-out both;
+}
+
+/* Safari performance hints */
+.glass,
+section {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-target,
+  .hero-fade,
+  .nav-enter,
+  .dropdown-enter {
+    animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }

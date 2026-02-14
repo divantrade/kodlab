@@ -3,7 +3,6 @@
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { KodLabLogo } from "./KodLabLogo";
 
 const localeLabels: Record<string, string> = {
@@ -23,7 +22,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -53,11 +52,8 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav
+      className={`nav-enter fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "glass shadow-lg" : "bg-transparent"
       }`}
     >
@@ -106,30 +102,23 @@ export default function Navbar() {
                 {localeLabels[locale]}
               </button>
 
-              <AnimatePresence>
-                {langOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-full mt-2 end-0 glass rounded-lg overflow-hidden min-w-[100px]"
-                  >
-                    {Object.entries(localeLabels).map(([code, label]) => (
-                      <button
-                        key={code}
-                        onClick={() => switchLocale(code)}
-                        className={`w-full px-4 py-2 text-sm text-start hover:bg-cyan-500/10 transition-colors ${
-                          locale === code
-                            ? "text-cyan-400"
-                            : "text-gray-300"
-                        }`}
-                      >
-                        {label}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {langOpen && (
+                <div className="dropdown-enter absolute top-full mt-2 end-0 glass rounded-lg overflow-hidden min-w-[100px]">
+                  {Object.entries(localeLabels).map(([code, label]) => (
+                    <button
+                      key={code}
+                      onClick={() => switchLocale(code)}
+                      className={`w-full px-4 py-2 text-sm text-start hover:bg-cyan-500/10 transition-colors ${
+                        locale === code
+                          ? "text-cyan-400"
+                          : "text-gray-300"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* CTA Button */}
@@ -158,37 +147,34 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden glass rounded-lg mb-4 overflow-hidden"
-            >
-              <div className="px-4 py-3 space-y-1">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => scrollToSection(e, link.href)}
-                    className="block px-3 py-2 rounded-lg text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isOpen ? "max-h-96 opacity-100 mb-4" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="glass rounded-lg">
+            <div className="px-4 py-3 space-y-1">
+              {navLinks.map((link) => (
                 <a
-                  href="#contact"
-                  onClick={(e) => scrollToSection(e, "#contact")}
-                  className="block px-3 py-2 mt-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-center font-medium"
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="block px-3 py-2 rounded-lg text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"
                 >
-                  {t("getInTouch")}
+                  {link.label}
                 </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              ))}
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="block px-3 py-2 mt-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-center font-medium"
+              >
+                {t("getInTouch")}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

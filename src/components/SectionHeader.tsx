@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 
 interface SectionHeaderProps {
   badge: string;
@@ -15,38 +13,24 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className="text-center mb-16 sm:mb-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-6"
-      >
+      <FadeIn className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/5 mb-6">
         <span className="text-sm text-cyan-400 font-mono tracking-wider">
           {badge}
         </span>
-      </motion.div>
+      </FadeIn>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5 tracking-tight"
-      >
-        {title}
-      </motion.h2>
+      <FadeIn delay={100}>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5 tracking-tight">
+          {title}
+        </h2>
+      </FadeIn>
 
       {subtitle && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg leading-relaxed"
-        >
-          {subtitle}
-        </motion.p>
+        <FadeIn delay={200} className="max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
+            {subtitle}
+          </p>
+        </FadeIn>
       )}
     </div>
   );
