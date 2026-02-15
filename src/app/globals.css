@@ -82,9 +82,10 @@ body {
   border: 1px solid rgba(34, 211, 238, 0.1);
 }
 
-/* RTL support */
+/* RTL / Arabic support */
 [dir="rtl"] {
   text-align: right;
+  font-family: var(--font-cairo), system-ui, -apple-system, sans-serif;
 }
 
 /* Section spacing */
