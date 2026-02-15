@@ -34,9 +34,9 @@ export default function TechStack() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5">
           {technologies.map((tech, index) => (
             <FadeIn key={tech.name} delay={index * 50} scale>
-              <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-all duration-300 hover:scale-105 hover:-translate-y-1">
+              <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-[border-color,transform] duration-300 hover:scale-105 hover:-translate-y-1">
                 <div
-                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${tech.gradient} flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-all`}
+                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${tech.gradient} flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-[border-color]`}
                 >
                   <span className={`text-lg font-bold font-mono ${tech.text}`}>
                     {tech.abbr}

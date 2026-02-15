@@ -11,8 +11,8 @@
   --color-blue-500: #3b82f6;
   --color-blue-600: #2563eb;
   --color-purple-400: #a78bfa;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), "Fira Code", monospace;
 }
 
 html,
@@ -23,6 +23,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -49,22 +50,23 @@ body {
   background: var(--color-cyan-500);
 }
 
-/* Grid background effect */
+/* Grid background - disabled on mobile for Safari perf */
 .grid-bg {
-  background-image:
-    linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
   overflow-x: clip;
 }
 
-/* Glow effects */
-.glow-cyan {
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 60px rgba(6, 182, 212, 0.1);
+@media (min-width: 640px) {
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
 }
 
-.glow-text {
-  text-shadow: 0 0 40px rgba(6, 182, 212, 0.5);
+/* Glow effects - simplified for perf */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
 }
 
 /* Gradient text */
@@ -75,11 +77,9 @@ body {
   background-clip: text;
 }
 
-/* Glass effect */
+/* Glass effect - NO backdrop-filter (kills Safari scroll perf on fixed elements) */
 .glass {
-  background: rgba(10, 14, 39, 0.85);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  background: rgba(10, 14, 39, 0.95);
   border: 1px solid rgba(34, 211, 238, 0.1);
 }
 
@@ -117,40 +117,37 @@ section {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px) translateZ(0);
+    transform: translate3d(0, 30px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0) translateZ(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.8) translateZ(0);
+    transform: scale3d(0.8, 0.8, 1);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateZ(0);
+    transform: scale3d(1, 1, 1);
   }
 }
 
 @keyframes slideDown {
   from {
-    transform: translateY(-100%) translateZ(0);
+    transform: translate3d(0, -100%, 0);
   }
   to {
-    transform: translateY(0) translateZ(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 /* Scroll-triggered elements (FadeIn component) */
 .fade-target {
   opacity: 0;
-  will-change: transform, opacity;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
 .fade-target.in-view {
@@ -164,7 +161,6 @@ section {
 /* Hero entrance animations (play on page load) */
 .hero-fade {
   opacity: 0;
-  will-change: transform, opacity;
   animation: fadeInUp 0.7s ease-out forwards;
 }
 
@@ -182,7 +178,6 @@ section {
 
 /* Navbar entrance */
 .nav-enter {
-  will-change: transform;
   animation: slideDown 0.6s ease-out both;
 }
 
@@ -190,23 +185,16 @@ section {
 @keyframes dropdownIn {
   from {
     opacity: 0;
-    transform: translateY(-10px) translateZ(0);
+    transform: translate3d(0, -10px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0) translateZ(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .dropdown-enter {
   animation: dropdownIn 0.2s ease-out both;
-}
-
-/* Safari performance hints */
-.glass,
-section {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
 /* Reduced motion preference */

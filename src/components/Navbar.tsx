@@ -53,7 +53,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`nav-enter fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`nav-enter fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,box-shadow] duration-300 ${
         scrolled ? "glass shadow-lg" : "bg-transparent"
       }`}
     >
@@ -84,7 +84,7 @@ export default function Navbar() {
             <div className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-navy-600 hover:border-cyan-500/50 text-sm text-gray-300 hover:text-cyan-400 transition-all"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-navy-600 hover:border-cyan-500/50 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
               >
                 <svg
                   className="w-4 h-4"
@@ -125,7 +125,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => scrollToSection(e, "#contact")}
-              className="hidden sm:inline-flex items-center px-5 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 glow-cyan"
+              className="hidden sm:inline-flex items-center px-5 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium hover:from-cyan-400 hover:to-blue-500 transition-colors duration-300 glow-cyan"
             >
               {t("getInTouch")}
             </a>
@@ -148,7 +148,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${
             isOpen ? "max-h-96 opacity-100 mb-4" : "max-h-0 opacity-0"
           }`}
         >
@@ -159,7 +159,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="block px-3 py-2 rounded-lg text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"
+                  className="block px-3 py-2 rounded-lg text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-colors"
                 >
                   {link.label}
                 </a>

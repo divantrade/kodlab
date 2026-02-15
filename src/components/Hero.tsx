@@ -42,7 +42,7 @@ export default function Hero() {
           <a
             href="#portfolio"
             onClick={(e) => scrollTo(e, "#portfolio")}
-            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm hover:from-cyan-400 hover:to-blue-500 transition-colors duration-300"
           >
             {t("cta1")}
             <span className="transition-transform duration-300 group-hover:translate-x-0.5">&rarr;</span>
@@ -50,7 +50,7 @@ export default function Hero() {
           <a
             href="#contact"
             onClick={(e) => scrollTo(e, "#contact")}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/10 bg-white/[0.03] text-gray-300 hover:border-cyan-500/40 hover:text-white transition-all duration-300 font-medium text-sm backdrop-blur-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-white/10 bg-navy-950/50 text-gray-300 hover:border-cyan-500/40 hover:text-white transition-colors duration-300 font-medium text-sm"
           >
             {t("cta2")}
           </a>

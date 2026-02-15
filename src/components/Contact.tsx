@@ -76,21 +76,21 @@ export default function Contact() {
                   name="name"
                   required
                   placeholder={t("form.name")}
-                  className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all text-sm"
+                  className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-[border-color,box-shadow] text-sm"
                 />
                 <input
                   type="email"
                   name="email"
                   required
                   placeholder={t("form.email")}
-                  className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all text-sm"
+                  className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-[border-color,box-shadow] text-sm"
                 />
               </div>
 
               <select
                 name="project_type"
                 required
-                className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-gray-400 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all text-sm appearance-none"
+                className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-gray-400 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-[border-color,box-shadow] text-sm appearance-none"
                 style={{
                   backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E")`,
                   backgroundRepeat: "no-repeat",
@@ -113,13 +113,13 @@ export default function Contact() {
                 required
                 rows={5}
                 placeholder={t("form.message")}
-                className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-all resize-none text-sm"
+                className="w-full px-5 py-3.5 rounded-xl bg-navy-800/60 border border-navy-700/80 text-white placeholder-gray-500 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/10 transition-[border-color,box-shadow] resize-none text-sm"
               />
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 glow-cyan hover:scale-[1.02] text-sm disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full sm:w-auto px-10 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:from-cyan-400 hover:to-blue-500 transition-[transform,opacity] duration-300 glow-cyan hover:scale-[1.02] text-sm disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {status === "sending" ? t("form.sending") : t("form.send")}
               </button>

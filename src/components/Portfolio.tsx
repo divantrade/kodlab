@@ -41,7 +41,7 @@ function ProjectCard({
   const card = (
     <FadeIn delay={index * 100}>
       <div
-        className={`group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-all duration-300 hover:-translate-y-1.5${url ? " cursor-pointer" : ""}`}
+        className={`group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-[border-color,transform] duration-300 hover:-translate-y-1.5${url ? " cursor-pointer" : ""}`}
       >
         <div
           className={`relative h-52 sm:h-56 bg-gradient-to-br ${gradient} flex items-center justify-center overflow-hidden`}
@@ -50,8 +50,8 @@ function ProjectCard({
           <div className="text-3xl sm:text-4xl font-extrabold text-white/15 font-mono tracking-wider select-none">
             {t(`projects.${projectKey}.name`)}
           </div>
-          <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/50 transition-all duration-300 flex items-center justify-center">
-            <span className="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 text-white text-sm font-semibold px-6 py-2.5 rounded-xl bg-cyan-500/90 backdrop-blur-sm transition-all duration-300 shadow-lg shadow-cyan-500/20">
+          <div className="absolute inset-0 bg-navy-950/0 group-hover:bg-navy-950/50 transition-[background-color] duration-300 flex items-center justify-center">
+            <span className="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 text-white text-sm font-semibold px-6 py-2.5 rounded-xl bg-cyan-500/90 transition-[opacity,transform] duration-300 shadow-lg shadow-cyan-500/20">
               {t("viewProject")}
             </span>
           </div>
