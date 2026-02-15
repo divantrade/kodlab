@@ -24,7 +24,7 @@ export const KodLabLogo: React.FC<KodLabLogoProps> = ({
   const dark = "#0a0e27";
 
   return (
-    <div className={`flex items-center gap-3 font-sans ${className}`}>
+    <div dir="ltr" className={`flex items-center gap-3 font-sans ${className}`}>
       {/* Icon Mark */}
       <svg
         width={iconSize}
