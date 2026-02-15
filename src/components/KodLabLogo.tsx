@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 interface KodLabLogoProps {
   className?: string;
@@ -13,6 +13,8 @@ export const KodLabLogo: React.FC<KodLabLogoProps> = ({
   size = 48,
   variant = 'color'
 }) => {
+  const uid = useId();
+  const gradientId = `kodlab-grad-${uid}`;
   const iconSize = size;
   const fontSize = size * 0.75;
 
@@ -32,21 +34,19 @@ export const KodLabLogo: React.FC<KodLabLogoProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         className="shrink-0"
       >
-        <defs>
-          <linearGradient id="kodlab-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={cyan} />
-            <stop offset="100%" stopColor={blue} />
-          </linearGradient>
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+        {variant === 'color' && (
+          <defs>
+            <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor={cyan} />
+              <stop offset="100%" stopColor={blue} />
+            </linearGradient>
+          </defs>
+        )}
 
         {/* Flask Body */}
         <path
           d="M38 10 H62 V35 L82 65 C88 74 85 88 75 90 H25 C15 88 12 74 18 65 L38 35 V10Z"
-          fill={variant === 'color' ? "url(#kodlab-gradient)" : (variant === 'white' ? white : cyan)}
+          fill={variant === 'color' ? `url(#${gradientId})` : (variant === 'white' ? white : cyan)}
           stroke={variant === 'mono' ? cyan : 'none'}
           strokeWidth={variant === 'mono' ? 3 : 0}
         />

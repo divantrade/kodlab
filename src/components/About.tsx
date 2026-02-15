@@ -21,8 +21,8 @@ export default function About() {
         <div className="max-w-4xl mx-auto">
           <FadeIn>
             <div className="relative p-8 sm:p-12 rounded-2xl bg-navy-800/40 border border-navy-700/80 overflow-hidden">
-              {/* Glow effect */}
-              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-[100px]" />
+              {/* Glow effect - hidden on mobile for Safari GPU perf */}
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/5 rounded-full blur-[100px] hidden sm:block" />
 
               <div className="relative">
                 <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
