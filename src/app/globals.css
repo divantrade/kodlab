@@ -12,7 +12,7 @@
   --color-blue-600: #2563eb;
   --color-purple-400: #a78bfa;
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-mono), "Fira Code", monospace;
+  --font-mono: var(--font-jetbrains), "Fira Code", monospace;
 }
 
 html,
@@ -22,7 +22,6 @@ body {
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
