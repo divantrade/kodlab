@@ -26,7 +26,7 @@ export default function Hero() {
         </div>
 
         {/* Headline - direct after logo */}
-        <h1 className="hero-fade hero-fade-d1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-7 tracking-tight">
+        <h1 className="hero-fade hero-fade-d1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2] mb-7 tracking-tight">
           {t("title")}
           <br />
           <span className="gradient-text">{t("titleHighlight")}</span>
