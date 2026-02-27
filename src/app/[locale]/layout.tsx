@@ -4,6 +4,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Inter, JetBrains_Mono, Cairo } from "next/font/google";
+import LocaleRedirect from "@/components/LocaleRedirect";
 import "../globals.css";
 
 const inter = Inter({
@@ -85,6 +86,7 @@ export default async function LocaleLayout({
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${cairo.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
+          <LocaleRedirect />
           {children}
         </NextIntlClientProvider>
       </body>

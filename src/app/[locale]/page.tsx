@@ -17,7 +17,7 @@ export const revalidate = 3600; // Revalidate every hour
 
 export default function Home() {
   return (
-    <main className="grid-bg min-h-screen w-full">
+    <main className="locale-fade-in grid-bg min-h-screen w-full">
       <ScrollProgress />
       <Navbar />
       <Hero />
