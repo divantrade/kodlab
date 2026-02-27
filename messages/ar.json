@@ -45,6 +45,9 @@
     "title": "مشاريع مختارة",
     "subtitle": "نماذج من أحدث أعمالنا في تطوير الويب وبناء العلامات التجارية والحلول الرقمية.",
     "viewProject": "عرض المشروع",
+    "filterAll": "الكل",
+    "filterMedia": "إنتاج إعلامي",
+    "filterBusiness": "أعمال وخدمات",
     "projects": {
       "luxefilms": {
         "name": "LUXEFILMS",

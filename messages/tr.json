@@ -45,6 +45,9 @@
     "title": "Öne Çıkan Projeler",
     "subtitle": "Web geliştirme, markalaşma ve dijital çözümler alanındaki son çalışmalarımızdan bir seçki.",
     "viewProject": "Projeyi Görüntüle",
+    "filterAll": "Tümü",
+    "filterMedia": "Medya ve Prodüksiyon",
+    "filterBusiness": "İş ve Hizmetler",
     "projects": {
       "luxefilms": {
         "name": "LUXEFILMS",

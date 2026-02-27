@@ -45,6 +45,9 @@
     "title": "Featured Projects",
     "subtitle": "A selection of our recent work across web development, branding, and digital solutions.",
     "viewProject": "View Project",
+    "filterAll": "All",
+    "filterMedia": "Media & Production",
+    "filterBusiness": "Business & Services",
     "projects": {
       "luxefilms": {
         "name": "LUXEFILMS",
