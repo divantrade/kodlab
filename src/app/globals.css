@@ -19,6 +19,7 @@ html,
 body {
   width: 100%;
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -80,6 +81,14 @@ body {
 .glass {
   background: rgba(10, 14, 39, 0.95);
   border: 1px solid rgba(34, 211, 238, 0.1);
+}
+
+/* Glass with blur - used only when navbar is scrolled */
+.glass-blur {
+  background: rgba(10, 14, 39, 0.8);
+  border: 1px solid rgba(34, 211, 238, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 /* RTL / Arabic support */
@@ -188,10 +197,20 @@ section {
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   .nav-enter,
   .dropdown-enter {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  /* Disable all transitions and animations */
+  .scroll-to-top,
+  .scroll-progress {
+    transition: none !important;
   }
 }
