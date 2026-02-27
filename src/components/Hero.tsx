@@ -1,10 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { KodLabLogo } from "./KodLabLogo";
 import TypeWriter from "./TypeWriter";
 import { fadeInUp, heroStagger } from "@/lib/motion";
+
+const ParticlesBackground = dynamic(() => import("./ParticlesBackground"), {
+  ssr: false,
+});
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -15,15 +20,21 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
-      {/* Soft ambient background - hidden on mobile for Safari GPU perf */}
-      <div className="absolute inset-0 pointer-events-none hidden sm:block">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#0A0F1E]">
+      {/* Particle background – z-0 */}
+      <div className="absolute inset-0 z-0">
+        <ParticlesBackground />
+      </div>
+
+      {/* Soft ambient glow – z-[1], hidden on mobile for Safari GPU perf */}
+      <div className="absolute inset-0 z-[1] pointer-events-none hidden sm:block">
         <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[800px] h-[600px] bg-cyan-500/[0.04] rounded-full blur-[100px]" />
         <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/[0.06] rounded-full blur-[80px]" />
       </div>
 
+      {/* Content – z-10 */}
       <motion.div
-        className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32"
+        className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32"
         variants={heroStagger}
         initial="hidden"
         animate="visible"
