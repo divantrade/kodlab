@@ -110,6 +110,23 @@ section {
 }
 
 /* ──────────────────────────────────────────
+   TypeWriter blinking cursor
+   ────────────────────────────────────────── */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  animation: blink 0.75s step-end infinite;
+  color: #00D4FF;
+  font-weight: 100;
+  margin-inline-start: 2px;
+}
+
+/* ──────────────────────────────────────────
    CSS animations (navbar & dropdown only)
    Framer Motion handles all other animations
    ────────────────────────────────────────── */

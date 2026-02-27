@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { KodLabLogo } from "./KodLabLogo";
+import TypeWriter from "./TypeWriter";
 import { fadeInUp, heroStagger } from "@/lib/motion";
 
 export default function Hero() {
@@ -32,14 +33,22 @@ export default function Hero() {
           <KodLabLogo size={80} className="justify-center" />
         </motion.div>
 
-        {/* Headline - direct after logo */}
+        {/* Headline with typewriter effect */}
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2] mb-7 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.2] mb-7 tracking-tight min-h-[2.4em]"
           variants={fadeInUp}
         >
-          {t("title")}
-          <br />
-          <span className="gradient-text">{t("titleHighlight")}</span>
+          <TypeWriter
+            phrases={[
+              t("typingPhrase1"),
+              t("typingPhrase2"),
+              t("typingPhrase3"),
+            ]}
+            className="text-[#00D4FF]"
+            typingSpeed={70}
+            deletingSpeed={35}
+            pauseDuration={2500}
+          />
         </motion.h1>
 
         {/* Description */}
