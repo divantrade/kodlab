@@ -1,8 +1,19 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
+import { scaleIn, viewportOnce } from "@/lib/motion";
+import type { Variants } from "framer-motion";
+
+const techStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
 
 const technologies = [
   { name: "Next.js", abbr: "Nx", gradient: "from-white/20 to-gray-400/20", text: "text-white" },
@@ -31,9 +42,15 @@ export default function TechStack() {
           subtitle={t("subtitle")}
         />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5">
-          {technologies.map((tech, index) => (
-            <FadeIn key={tech.name} delay={index * 50} scale>
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5"
+          variants={techStagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          {technologies.map((tech) => (
+            <motion.div key={tech.name} variants={scaleIn}>
               <div className="group flex flex-col items-center gap-4 p-6 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-[border-color,transform] duration-300 hover:scale-105 hover:-translate-y-1">
                 <div
                   className={`w-14 h-14 rounded-xl bg-gradient-to-br ${tech.gradient} flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-[border-color]`}
@@ -46,9 +63,9 @@ export default function TechStack() {
                   {tech.name}
                 </span>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

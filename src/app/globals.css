@@ -110,31 +110,9 @@ section {
 }
 
 /* ──────────────────────────────────────────
-   CSS animations (replaces framer-motion)
-   Hardware-accelerated for Safari perf
+   CSS animations (navbar & dropdown only)
+   Framer Motion handles all other animations
    ────────────────────────────────────────── */
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 30px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale3d(0.8, 0.8, 1);
-  }
-  to {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
-  }
-}
 
 @keyframes slideDown {
   from {
@@ -143,37 +121,6 @@ section {
   to {
     transform: translate3d(0, 0, 0);
   }
-}
-
-/* Scroll-triggered elements (FadeIn component) */
-.fade-target {
-  opacity: 0;
-}
-
-.fade-target.in-view {
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.fade-target.fade-scale.in-view {
-  animation: scaleIn 0.4s ease-out forwards;
-}
-
-/* Hero entrance animations (play on page load) */
-.hero-fade {
-  opacity: 0;
-  animation: fadeInUp 0.7s ease-out forwards;
-}
-
-.hero-fade-d1 {
-  animation-delay: 0.15s;
-}
-
-.hero-fade-d2 {
-  animation-delay: 0.3s;
-}
-
-.hero-fade-d3 {
-  animation-delay: 0.45s;
 }
 
 /* Navbar entrance */
@@ -199,8 +146,6 @@ section {
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .fade-target,
-  .hero-fade,
   .nav-enter,
   .dropdown-enter {
     animation: none !important;

@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { motion } from "framer-motion";
+import { type ReactNode } from "react";
+import { fadeInUp, scaleIn, viewportOnce } from "@/lib/motion";
 
 export default function FadeIn({
   children,
@@ -13,33 +15,16 @@ export default function FadeIn({
   delay?: number;
   scale?: boolean;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.animationDelay = `${delay}ms`;
-          el.classList.add("in-view");
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1, rootMargin: "50px" },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [delay]);
-
   return (
-    <div
-      ref={ref}
-      className={`fade-target${scale ? " fade-scale" : ""} ${className}`}
+    <motion.div
+      className={className}
+      variants={scale ? scaleIn : fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOnce}
+      transition={{ duration: scale ? 0.4 : 0.5, ease: "easeOut", delay: delay / 1000 }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

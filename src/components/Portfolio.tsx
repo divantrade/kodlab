@@ -1,8 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
+import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 
 const projectKeys = ["luxefilms", "dvn", "divan", "seen", "dewan"] as const;
 
@@ -24,13 +25,11 @@ const projectGradients = [
 
 function ProjectCard({
   projectKey,
-  index,
   gradient,
   tech,
   t,
 }: {
   projectKey: string;
-  index: number;
   gradient: string;
   tech: string[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -39,7 +38,7 @@ function ProjectCard({
   const url = t(`projects.${projectKey}.url`);
 
   const card = (
-    <FadeIn delay={index * 100}>
+    <motion.div variants={fadeInUp}>
       <div
         className={`group relative rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 overflow-hidden transition-[border-color,transform] duration-300 hover:-translate-y-1.5${url ? " cursor-pointer" : ""}`}
       >
@@ -81,7 +80,7 @@ function ProjectCard({
           </div>
         </div>
       </div>
-    </FadeIn>
+    </motion.div>
   );
 
   if (url) {
@@ -107,31 +106,41 @@ export default function Portfolio() {
           subtitle={t("subtitle")}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {projectKeys.slice(0, 3).map((key, index) => (
             <ProjectCard
               key={key}
               projectKey={key}
-              index={index}
               gradient={projectGradients[index]}
               tech={projectTech[key]}
               t={t}
             />
           ))}
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {projectKeys.slice(3).map((key, index) => (
             <ProjectCard
               key={key}
               projectKey={key}
-              index={index + 3}
               gradient={projectGradients[index + 3]}
               tech={projectTech[key]}
               t={t}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
