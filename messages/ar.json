@@ -118,6 +118,12 @@
     "stat3Label": "سنوات خبرة",
     "stat3Value": "+5"
   },
+  "stats": {
+    "projects": "مشروع مُنجز",
+    "clients": "عميل سعيد",
+    "experience": "سنوات خبرة",
+    "satisfaction": "رضا العملاء"
+  },
   "contact": {
     "badge": "تواصل معنا",
     "title": "لنعمل معاً",

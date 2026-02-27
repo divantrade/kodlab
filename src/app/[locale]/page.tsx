@@ -5,6 +5,7 @@ import Portfolio from "@/components/Portfolio";
 import Process from "@/components/Process";
 import TechStack from "@/components/TechStack";
 import About from "@/components/About";
+import StatsCounter from "@/components/StatsCounter";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Process />
       <TechStack />
       <About />
+      <StatsCounter />
       <Contact />
       <Footer />
     </main>

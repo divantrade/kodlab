@@ -109,6 +109,18 @@ section {
   z-index: -1;
 }
 
+/* Stat card subtle glow */
+.stat-card {
+  box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, 0.15),
+    0 0 20px rgba(34, 211, 238, 0.08);
+}
+
 /* ──────────────────────────────────────────
    TypeWriter blinking cursor
    ────────────────────────────────────────── */

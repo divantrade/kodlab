@@ -118,6 +118,12 @@
     "stat3Label": "Years Experience",
     "stat3Value": "5+"
   },
+  "stats": {
+    "projects": "Projects Delivered",
+    "clients": "Happy Clients",
+    "experience": "Years Experience",
+    "satisfaction": "Client Satisfaction"
+  },
   "contact": {
     "badge": "Get in Touch",
     "title": "Let's Work Together",

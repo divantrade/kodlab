@@ -118,6 +118,12 @@
     "stat3Label": "Yıllık Deneyim",
     "stat3Value": "5+"
   },
+  "stats": {
+    "projects": "Tamamlanan Proje",
+    "clients": "Mutlu Müşteri",
+    "experience": "Yıllık Deneyim",
+    "satisfaction": "Müşteri Memnuniyeti"
+  },
   "contact": {
     "badge": "İletişime Geçin",
     "title": "Birlikte Çalışalım",
