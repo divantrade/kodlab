@@ -11,6 +11,9 @@
   "hero": {
     "title": "نصنع تجارب",
     "titleHighlight": "رقمية مبتكرة",
+    "typingPhrase1": "نصنع تجارب رقمية مبتكرة",
+    "typingPhrase2": "نطوّر مواقع احترافية",
+    "typingPhrase3": "نبني حلول ذكية بالـ AI",
     "tagline": "Code. Create. Launch.",
     "description": "حلول رقمية ذكية تجمع بين تطوير الويب والأتمتة والتصميم، لمساعدة أعمالك على الانطلاق والنمو.",
     "cta1": "شاهد أعمالنا",
@@ -42,6 +45,9 @@
     "title": "مشاريع مختارة",
     "subtitle": "نماذج من أحدث أعمالنا في تطوير الويب وبناء العلامات التجارية والحلول الرقمية.",
     "viewProject": "عرض المشروع",
+    "filterAll": "الكل",
+    "filterMedia": "إنتاج إعلامي",
+    "filterBusiness": "أعمال وخدمات",
     "projects": {
       "luxefilms": {
         "name": "LUXEFILMS",
@@ -114,6 +120,12 @@
     "stat2Value": "+30",
     "stat3Label": "سنوات خبرة",
     "stat3Value": "+5"
+  },
+  "stats": {
+    "projects": "مشروع مُنجز",
+    "clients": "عميل سعيد",
+    "experience": "سنوات خبرة",
+    "satisfaction": "رضا العملاء"
   },
   "contact": {
     "badge": "تواصل معنا",

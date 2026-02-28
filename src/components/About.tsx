@@ -1,8 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
+import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 
 export default function About() {
   const t = useTranslations("about");
@@ -33,9 +35,15 @@ export default function About() {
                 </p>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 sm:gap-8">
+                <motion.div
+                  className="grid grid-cols-3 gap-4 sm:gap-8"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={viewportOnce}
+                >
                   {stats.map((stat, index) => (
-                    <FadeIn key={index} delay={index * 100}>
+                    <motion.div key={index} variants={fadeInUp}>
                       <div className="text-center p-4 sm:p-6 rounded-xl bg-navy-900/50 border border-navy-700/50">
                         <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold gradient-text mb-2">
                           {stat.value}
@@ -44,9 +52,9 @@ export default function About() {
                           {stat.label}
                         </div>
                       </div>
-                    </FadeIn>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </div>
           </FadeIn>

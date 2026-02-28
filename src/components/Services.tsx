@@ -1,8 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
+import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 
 const serviceIcons = [
   <svg key="web" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,9 +35,15 @@ export default function Services() {
           subtitle={t("subtitle")}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {serviceKeys.map((key, index) => (
-            <FadeIn key={key} delay={index * 100}>
+            <motion.div key={key} variants={fadeInUp}>
               <div className="group relative p-7 sm:p-8 rounded-2xl bg-navy-800/60 border border-navy-700/80 hover:border-cyan-500/40 transition-[border-color,background-color,transform] duration-300 hover:bg-navy-800/80 hover:-translate-y-2">
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:from-cyan-500/30 group-hover:to-blue-500/30 transition-[border-color] duration-300">
                   {serviceIcons[index]}
@@ -48,9 +55,9 @@ export default function Services() {
                   {t(`${key}.description`)}
                 </p>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,7 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { KodLabLogo } from "./KodLabLogo";
+import TypeWriter from "./TypeWriter";
+import { fadeInUp, heroStagger } from "@/lib/motion";
+
+const ParticlesBackground = dynamic(() => import("./ParticlesBackground"), {
+  ssr: false,
+});
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -12,33 +20,61 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
-      {/* Soft ambient background - hidden on mobile for Safari GPU perf */}
-      <div className="absolute inset-0 pointer-events-none hidden sm:block">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#0A0F1E]">
+      {/* Particle background – z-0 */}
+      <div className="absolute inset-0 z-0">
+        <ParticlesBackground />
+      </div>
+
+      {/* Soft ambient glow – z-[1], hidden on mobile for Safari GPU perf */}
+      <div className="absolute inset-0 z-[1] pointer-events-none hidden sm:block">
         <div className="absolute top-[30%] left-[50%] -translate-x-1/2 w-[800px] h-[600px] bg-cyan-500/[0.04] rounded-full blur-[100px]" />
         <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/[0.06] rounded-full blur-[80px]" />
       </div>
 
-      <div className="relative max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32">
+      {/* Content – z-10 */}
+      <motion.div
+        className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-32"
+        variants={heroStagger}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Logo - clean entrance */}
-        <div className="hero-fade mb-10">
+        <motion.div className="mb-10" variants={fadeInUp}>
           <KodLabLogo size={80} className="justify-center" />
-        </div>
+        </motion.div>
 
-        {/* Headline - direct after logo */}
-        <h1 className="hero-fade hero-fade-d1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2] mb-7 tracking-tight">
-          {t("title")}
-          <br />
-          <span className="gradient-text">{t("titleHighlight")}</span>
-        </h1>
+        {/* Headline with typewriter effect */}
+        <motion.h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.2] mb-7 tracking-tight min-h-[2.4em]"
+          variants={fadeInUp}
+        >
+          <TypeWriter
+            phrases={[
+              t("typingPhrase1"),
+              t("typingPhrase2"),
+              t("typingPhrase3"),
+            ]}
+            className="text-[#00D4FF]"
+            typingSpeed={70}
+            deletingSpeed={35}
+            pauseDuration={2500}
+          />
+        </motion.h1>
 
         {/* Description */}
-        <p className="hero-fade hero-fade-d2 max-w-xl mx-auto text-base sm:text-lg text-gray-400 mb-14 leading-relaxed">
+        <motion.p
+          className="max-w-xl mx-auto text-base sm:text-lg text-gray-400 mb-14 leading-relaxed"
+          variants={fadeInUp}
+        >
           {t("description")}
-        </p>
+        </motion.p>
 
         {/* CTAs - pill-shaped buttons */}
-        <div className="hero-fade hero-fade-d3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          variants={fadeInUp}
+        >
           <a
             href="#portfolio"
             onClick={(e) => scrollTo(e, "#portfolio")}
@@ -54,8 +90,8 @@ export default function Hero() {
           >
             {t("cta2")}
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

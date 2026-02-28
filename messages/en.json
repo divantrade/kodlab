@@ -11,6 +11,9 @@
   "hero": {
     "title": "We Build Digital",
     "titleHighlight": "Experiences",
+    "typingPhrase1": "We Build Digital Experiences",
+    "typingPhrase2": "We Develop Professional Websites",
+    "typingPhrase3": "We Create Smart AI Solutions",
     "tagline": "Code. Create. Launch.",
     "description": "AI-powered web solutions, automation, and design that help businesses launch and scale in the digital world.",
     "cta1": "View Our Work",
@@ -42,6 +45,9 @@
     "title": "Featured Projects",
     "subtitle": "A selection of our recent work across web development, branding, and digital solutions.",
     "viewProject": "View Project",
+    "filterAll": "All",
+    "filterMedia": "Media & Production",
+    "filterBusiness": "Business & Services",
     "projects": {
       "luxefilms": {
         "name": "LUXEFILMS",
@@ -114,6 +120,12 @@
     "stat2Value": "30+",
     "stat3Label": "Years Experience",
     "stat3Value": "5+"
+  },
+  "stats": {
+    "projects": "Projects Delivered",
+    "clients": "Happy Clients",
+    "experience": "Years Experience",
+    "satisfaction": "Client Satisfaction"
   },
   "contact": {
     "badge": "Get in Touch",

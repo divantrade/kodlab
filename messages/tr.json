@@ -11,6 +11,9 @@
   "hero": {
     "title": "Dijital Deneyimler",
     "titleHighlight": "İnşa Ediyoruz",
+    "typingPhrase1": "Dijital Deneyimler İnşa Ediyoruz",
+    "typingPhrase2": "Profesyonel Web Siteleri Geliştiriyoruz",
+    "typingPhrase3": "Akıllı AI Çözümleri Oluşturuyoruz",
     "tagline": "Code. Create. Launch.",
     "description": "Yapay zeka destekli web çözümleri, otomasyon ve tasarım ile işletmelerin dijital dünyada başlamasına ve büyümesine yardımcı oluyoruz.",
     "cta1": "Çalışmalarımızı Görün",
@@ -42,6 +45,9 @@
     "title": "Öne Çıkan Projeler",
     "subtitle": "Web geliştirme, markalaşma ve dijital çözümler alanındaki son çalışmalarımızdan bir seçki.",
     "viewProject": "Projeyi Görüntüle",
+    "filterAll": "Tümü",
+    "filterMedia": "Medya ve Prodüksiyon",
+    "filterBusiness": "İş ve Hizmetler",
     "projects": {
       "luxefilms": {
         "name": "LUXEFILMS",
@@ -114,6 +120,12 @@
     "stat2Value": "30+",
     "stat3Label": "Yıllık Deneyim",
     "stat3Value": "5+"
+  },
+  "stats": {
+    "projects": "Tamamlanan Proje",
+    "clients": "Mutlu Müşteri",
+    "experience": "Yıllık Deneyim",
+    "satisfaction": "Müşteri Memnuniyeti"
   },
   "contact": {
     "badge": "İletişime Geçin",

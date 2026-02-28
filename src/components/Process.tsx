@@ -1,8 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import FadeIn from "./FadeIn";
 import SectionHeader from "./SectionHeader";
+import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/motion";
 
 const stepIcons = [
   <svg key="discover" className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,12 +35,18 @@ export default function Process() {
           subtitle={t("subtitle")}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           {/* Connecting line */}
           <div className="hidden lg:block absolute top-[52px] left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
 
           {stepKeys.map((key, index) => (
-            <FadeIn key={key} delay={index * 150}>
+            <motion.div key={key} variants={fadeInUp}>
               <div className="relative text-center p-6 sm:p-8">
                 <div className="relative mx-auto mb-8 w-fit">
                   <div className="w-20 h-20 rounded-2xl bg-navy-800/80 border border-navy-700/80 flex items-center justify-center text-cyan-400 mx-auto shadow-lg shadow-navy-950/50">
@@ -57,9 +64,9 @@ export default function Process() {
                   {t(`steps.${key}.description`)}
                 </p>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
