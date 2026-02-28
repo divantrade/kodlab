@@ -78,6 +78,12 @@
         "category": "Legal & Business",
         "description": "Legal and business consulting firm with professional corporate design.",
         "url": "https://www.aldewan.net/en"
+      },
+      "certify": {
+        "name": "Certify",
+        "category": "Testing & Certification",
+        "description": "Testing, inspection, and certification platform ensuring quality and compliance across industries.",
+        "url": "https://certify.com.tr/"
       }
     }
   },

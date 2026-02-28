@@ -46,6 +46,12 @@ const projects: Project[] = [
     tech: ["Next.js", "Tailwind", "Vercel"],
     gradient: "from-blue-600/30 via-indigo-500/20 to-violet-600/30",
   },
+  {
+    key: "certify",
+    filter: "business",
+    tech: ["Next.js", "Tailwind", "Vercel"],
+    gradient: "from-green-600/30 via-emerald-500/20 to-teal-600/30",
+  },
 ];
 
 const filterKeys: FilterKey[] = ["all", "media", "business"];

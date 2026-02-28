@@ -78,6 +78,12 @@
         "category": "Hukuk ve İş Danışmanlığı",
         "description": "Profesyonel kurumsal tasarıma sahip hukuk ve iş danışmanlığı firması.",
         "url": "https://www.aldewan.net/tr"
+      },
+      "certify": {
+        "name": "Certify",
+        "category": "Test ve Belgelendirme",
+        "description": "Endüstriler genelinde kalite ve uyumluluk sağlayan test, muayene ve belgelendirme platformu.",
+        "url": "https://certify.com.tr/"
       }
     }
   },
